@@ -1,0 +1,6 @@
+.mainScreen{
+    /* flex: 4; */
+    min-width: 800px;
+    background-color: white;
+    margin-top: 10px;
+}

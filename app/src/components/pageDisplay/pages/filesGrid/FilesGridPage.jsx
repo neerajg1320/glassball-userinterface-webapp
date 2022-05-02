@@ -1,0 +1,123 @@
+import React, { useEffect } from 'react'
+import "./filesGridPage.css"
+import { PictureAsPdf, DeleteOutline, Done, Clear, TextFormat, CalendarViewMonth } from '@mui/icons-material';
+
+import { connect } from 'react-redux';
+import { removeResourceAsync, fetchResourcesAsync } from '../../../../redux';
+import FilesInput from './FilesInput';
+import ResourceGrid from "../resource/ResourceGrid";
+
+
+function FilesGridPage({files, removeFileAsync, fetchFilesAsync}) {
+    const resType = 'files';
+
+    const deleteFileById = id => {
+      const file = files.filter(file => file.id === id)[0]
+      removeFileAsync(resType, file);
+    }
+
+    const refreshFiles = () => {
+      fetchFilesAsync(resType)
+    }
+
+    const onFilePathClick = (fileurl) => {
+      window.open(fileurl)
+    }
+
+    const columns = [
+      { field: 'id', headerName: 'ID', width: 90 },
+      {
+        field: 'title',
+        headerName: 'Title',
+        width: 250,
+        // editable: true,
+      },
+      {
+        field: 'uploaded',
+        headerName: "Uploaded",
+        width: 100,
+        renderCell: (params) => {
+          return (
+            <div className="fileItemUploaded">
+              {params.row.uploaded ? <Done/> : <Clear/>}
+            </div>
+          )
+        }
+      },
+      {
+        field: 'file',
+        headerName: 'Link',
+        width: 150,
+        // editable: true,
+        renderCell: (params) => {
+          return ( 
+            <div className="fileLinksGroup">
+              <div className="fileLink" onClick={() => {onFilePathClick(params.row.file)}}>
+                <PictureAsPdf  className="fileItemLink" />
+              </div>
+              <div className="fileLink"  onClick={() => {onFilePathClick(params.row.textFile)}}>
+                <TextFormat  className="fileItemView" />
+              </div>
+              <div className="fileLink"  onClick={() => {onFilePathClick(params.row.ssFile)}}>
+                <CalendarViewMonth  className="fileItemView" />
+              </div>
+            </div> 
+          )
+        }
+      },
+      {
+        field: 'action',
+        headerName: "Action",
+        width: 50,
+        renderCell: (params) => {
+          return (
+            <div className="fileItemActions">
+              <DeleteOutline  className="fileItemDelete" onClick={() => {
+                    deleteFileById(params.row.id)
+                  }
+                }
+              />
+            </div>
+          )
+        }
+      }
+    ];
+
+    useEffect(() => {
+        refreshFiles();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    const closeAddFilesModal = () => {
+
+    }
+
+    return (
+        <div className="filesPage">
+            <div className="filesResGridContainer">
+                <ResourceGrid
+                    title='Files'
+                    resType={resType}
+                    data={files}
+                    columns={columns}>
+                    <FilesInput onClose={closeAddFilesModal}/>
+                </ResourceGrid>
+            </div>
+        </div>
+    )
+}
+
+const mapStateToProps = state => {
+  return {
+      files: state.resourceReducer.files.filter(file => file.uploaded === true),
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    removeFileAsync: (resType, file) => {dispatch(removeResourceAsync(resType, file))},
+    fetchFilesAsync: (resType) => {dispatch(fetchResourcesAsync(resType))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilesGridPage);

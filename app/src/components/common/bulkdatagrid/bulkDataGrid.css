@@ -1,0 +1,44 @@
+.bulkDataGrid{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /*border: dashed 1px salmon;*/
+}
+
+.gridTopbar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gridBulkActions {
+    margin: 20px;
+}
+
+.gridBulkActionDelete{
+    border: none;
+    border-radius: 5px;
+    margin-left: 20px;
+    padding: 4px 8px;
+}
+
+.gridBulkActionDelete.active{
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+.gridReadActions{
+    margin: 20px 40px;
+    cursor: pointer;
+}
+
+.gridTable{
+    width: 100%;
+    height: 100%;
+    /*border: dashed 1px black;*/
+    display: flex;
+    flex-direction: column;
+}

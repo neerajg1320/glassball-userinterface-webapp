@@ -1,0 +1,30 @@
+.ssReactTableContainer{
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ssReactTableTitle{
+    /* border-bottom: solid 1px saddlebrown; */
+    margin-bottom: 20px;
+}
+
+.ssReactTable {
+    border: solid 1px black;
+}
+
+.ssReactTableHeader{
+    border-bottom: solid 1px black;
+    background: aliceblue;
+    color: 'black';
+    font-weight: 'bold';
+    padding: 10px;
+}
+
+.ssReactTableCell{
+    background: papayawhip;
+    padding: 10px;
+}

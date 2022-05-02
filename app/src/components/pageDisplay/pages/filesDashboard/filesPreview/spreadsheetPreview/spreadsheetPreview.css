@@ -1,0 +1,11 @@
+.spreadSheetPreview{
+    display: flex;
+    flex-direction: column;
+}
+
+.spreadSheets{
+    /* border: solid 1px saddlebrown; */
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}

@@ -1,0 +1,19 @@
+.filePreviewContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filePreviewContent{
+    margin: 20px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fileName{
+    text-align: center;
+    padding: 10px;
+}

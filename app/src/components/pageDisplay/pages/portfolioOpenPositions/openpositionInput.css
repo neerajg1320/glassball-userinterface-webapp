@@ -1,0 +1,118 @@
+.inputContainer{
+    width: 90%;
+    /* -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    margin: 20px;
+    padding: 40px 20px;   */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.inputOptionsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin: 20px 0px;
+    /* border: solid 1px brown; */
+}
+
+.selectContainer{
+    display: flex;
+    align-items: center;
+    /* border: solid 1px black; */
+    width: 45%;
+}
+
+.selectLabel{
+    color: #AAA;
+    width: 40%;
+}
+
+.optionsContainer{
+    width: 60%;
+}
+
+.inputFieldsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+
+.inputFilesContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border: solid 1px brown; */
+    margin: 20px 0px;
+}
+
+.filesSelectContainer{
+    /* border: dashed 1px saddlebrown; */
+}
+
+
+.filesPathContainer{
+    /* border: dashed 1px saddlebrown; */
+    display: flex;
+}
+
+.pathInput{
+    margin-left: 20px;
+}
+
+
+.selectedFilesGrid{
+    width: 100%;
+    height: 300px;
+    /* border: solid 1px slateblue; */
+}
+
+.uploadFilesGridHeader{
+    display: none;
+}
+
+.doneButton{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.doneButton.active{
+    background-color: salmon;
+    color: white;
+    cursor: pointer;  
+}
+
+.inputFilesBottomBar{
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.uploadButtonContainer{
+    border: none;
+}
+
+.uploadButton{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.uploadButton.active{
+    background-color: salmon;
+    color: white;
+    cursor: pointer;  
+}
+
