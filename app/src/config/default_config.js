@@ -1,5 +1,5 @@
 
-const cloud_url = `http://23.236.53.153:8000`
+const cloud_url = `https://api.glassball.app`
 const local_url = `http://localhost:8080`
 const host_url = `${local_url}`
 
@@ -15,6 +15,6 @@ export default  {
   },
 
   "auth": {
-    "token": `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUxNDgyOTUzLCJqdGkiOiI1MWQ0NDkyZGFkOGQ0MjQ3OTVmNTRkZjBkYzhmNDAwMSIsInVzZXJfaWQiOiJjYzYxYzdjYy00MjIyLTRmYTUtYjJiOC0xODg2Njc2NzQxOGMifQ.9kCiS3xDlPtF5h50Xyrg6xd8ra4PKY2NfRbkzwAQImE`
+    "token": `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUxNTc3NjM2LCJqdGkiOiIxZWIxMWRmYTdkZjk0NmIwOTkwMGI2Y2FiNDJkNGUzMyIsInVzZXJfaWQiOiIyMDA1ZTE2OC0wZmUwLTRiMWItYTc4YS1kODBiODA3MGE3OTMifQ.FrvlYxpIkw_MgMh9o2gnf_1UGYKQJx9-O3PCbCg_WDc`
   }
 }
