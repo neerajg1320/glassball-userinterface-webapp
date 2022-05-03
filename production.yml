@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+    ui:
+        build:
+            context: ./
+        image: glassball-dms-ui
+        networks:
+            - reverseproxy-nw
+
+networks:
+    reverseproxy-nw:
+        external: true

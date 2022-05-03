@@ -1,7 +1,7 @@
 
 const cloud_url = `https://api.glassball.app`
 const local_url = `http://localhost:8080`
-const host_url = `${local_url}`
+const host_url = `${cloud_url}`
 
 const api_url = `${host_url}/api/v1`
 const media_url = `${host_url}/media`
