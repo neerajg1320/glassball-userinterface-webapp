@@ -16,5 +16,6 @@ export {
 
 export {
     setTokenAsync,
-    clearTokenAsync
+    clearTokenAsync,
+    createTokenAsync
 } from './auth/auth.actions';

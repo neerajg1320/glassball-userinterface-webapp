@@ -5,6 +5,7 @@
 }
 
 .serverSettingsContainer{
+    padding: 20px;
     height: 200px;
     width: 80%;
     display: flex;
@@ -37,12 +38,12 @@
     justify-content: space-around;
 }
 
-.authTokenInput{
+.authInput{
     width: 70%;
     margin-right: 10px;
 }
 
-.authTokenButton{
+.authButton{
     border: none;
     border-radius: 5px;
     background-color: cornflowerblue;
