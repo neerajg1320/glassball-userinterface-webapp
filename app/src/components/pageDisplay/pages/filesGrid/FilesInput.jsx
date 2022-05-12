@@ -12,16 +12,16 @@ import { createFileObj } from "../../../../helpers/files";
 
 
 const accountOptionsDefault = [
-    // { value: 'Zerodha Main', label: 'Zerodha Main' },
-    // { value: 'Axisdirect Main', label: 'Axisdirect Main'},
-    // { value: 'IndiaInfoline Main', label: 'IndiaInfoline Main'},
-    // { value: 'AxisDirect', label: 'Axis Direct' },
-    // { value: 'HDFCSec', label: 'HDFC Securities' },
-    // { value: 'ICICIDirect', label: 'ICICI Direct' },
-    // { value: 'IndiaInfoline', label: 'India Infoline' },
-    // { value: 'Zerodha', label: 'Zerodha' },
-    // { value: 'NSE', label: 'NSE' },
-    // { value: 'Etrade', label: 'E*Trade' },
+    { value: 'Zerodha Main', label: 'Zerodha Main' },
+    { value: 'Axisdirect Main', label: 'Axisdirect Main'},
+    { value: 'IndiaInfoline Main', label: 'IndiaInfoline Main'},
+    { value: 'AxisDirect', label: 'Axis Direct' },
+    { value: 'HDFCSec', label: 'HDFC Securities' },
+    { value: 'ICICIDirect', label: 'ICICI Direct' },
+    { value: 'IndiaInfoline', label: 'India Infoline' },
+    { value: 'Zerodha', label: 'Zerodha' },
+    { value: 'NSE', label: 'NSE' },
+    { value: 'Etrade', label: 'E*Trade' },
 ]
 
 const docTypeOptionsDefault = [
@@ -71,8 +71,8 @@ function FilesInput({ onClose, onResourceClose, files, docTypes, accounts,
             
         },
         {
-          field: 'title',
-          headerName: 'Title',
+          field: 'name',
+          headerName: 'Name',
           headerClassName: 'uploadFilesGridHeader',
           width: 150,
           // editable: true,
@@ -106,7 +106,7 @@ function FilesInput({ onClose, onResourceClose, files, docTypes, accounts,
     ];
 
     const onFileSelectionChange = (e) => {
-        console.log(e.target.files)
+        console.log("Selected Files:", e.target.files);
         setSelectedFiles(e.target.files)
 
         // e.target.filesDashboard is not an array but a FileList
@@ -143,7 +143,8 @@ function FilesInput({ onClose, onResourceClose, files, docTypes, accounts,
     const onUploadClick = () => {
         fileObjs.forEach(file => {
             const formData = new FormData();
-            formData.append('title', file.title);
+            // console.log("formData: file:", file)
+            formData.append('name', file.name);
             formData.append('account', selectedAccount);
             formData.append('document_type', selectedDocumentType);
             formData.append('file', file.selectedFile);
@@ -197,8 +198,9 @@ function FilesInput({ onClose, onResourceClose, files, docTypes, accounts,
     }, [accounts]);
 
     useEffect(() => {
-        fetchDocTypesAsync();
-        fetchAccountsAsync();
+        // Disabled as we do not use it currently
+        // fetchDocTypesAsync();
+        // fetchAccountsAsync();
 
         return () => {
             // console.log("return useEffect[]: filesListRef=", filesListRef.current);
@@ -208,10 +210,11 @@ function FilesInput({ onClose, onResourceClose, files, docTypes, accounts,
     }, []);
 
     useEffect(() => {
-        console.log(selectedAccount);
+        console.log("Selected Account:", selectedAccount);
         if (selectedFiles)
             console.log(selectedFiles);
-        setSaveEnabled(!!selectedFiles && selectedAccount && selectedDocumentType)
+        // setSaveEnabled(!!selectedFiles && selectedAccount && selectedDocumentType)
+        setSaveEnabled(!!selectedFiles)
     }, [selectedFiles, selectedAccount, selectedDocumentType])
 
     const onPasswordChange = (e) => {

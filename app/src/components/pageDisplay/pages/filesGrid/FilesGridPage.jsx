@@ -25,10 +25,10 @@ function FilesGridPage({files, removeFileAsync, fetchFilesAsync}) {
     }
 
     const columns = [
-      { field: 'id', headerName: 'ID', width: 90 },
+      { field: 'pkid', headerName: 'ID', width: 90 },
       {
-        field: 'title',
-        headerName: 'Title',
+        field: 'name',
+        headerName: 'Name',
         width: 250,
         // editable: true,
       },

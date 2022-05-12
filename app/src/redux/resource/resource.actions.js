@@ -147,8 +147,9 @@ export const removeResourceAsync = (resType, resource) => {
         // Send request to server only if we have the path on the server
         // In case we do not have path on server that means resource is present locally
         if (resource.uploaded) {
+            const res_del_url = `${getState().configReducer.server[resType]}/${resource.pkid}/`
             axios.delete(
-                `${getState().configReducer.server[resType]}/${resource.id}/`,
+                res_del_url,
                 {
                     headers: {
                         'Authorization': `${getState().authReducer.token_title} ${getState().authReducer.token}`

@@ -37,7 +37,7 @@ export const isSpreadsheet = filename => {
 export const createFileObj = (selectedFile) => {
     return {
         id: generateId(),
-        title: selectedFile.name,
+        name: selectedFile.name,
         size: selectedFile.size,
         selectedFile
     };
