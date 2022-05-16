@@ -38,7 +38,7 @@ function ResourceListItem({rItem, removeResourceAsync, setCurrentResourceAsync})
             <div className="widgetSmallUserBottom">
                 <div className="resourceInfo">
                 <span className="widgetSmallUserTitle">{rItem.size}</span>
-                <span className="widgetSmallId">{rItem.id}</span>
+                <span className="widgetSmallId">{rItem.pkid}</span>
                 </div>
                 <div className="resourceButtonsGroup">
                     <div className="widgetSmallIcon" onClick={() => onResourcePreviewClick(rItem.file)}>

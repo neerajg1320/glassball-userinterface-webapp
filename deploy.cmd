@@ -1,2 +1,2 @@
 # Deploy to GCE
-scp -r build django.glassball.app:~/glassball-userinterface/
+scp -r app/build django.glassball.app:~/glassball-userinterface/
