@@ -51,7 +51,7 @@ function FilesInput({ onClose, onResourceClose, files, docTypes, accounts,
     const [documentTypesOptions, setDocumentTypeOptions] = useState(docTypeOptionsDefault)
     const [selectedDocumentType, setSelectedDocumentType] = useState();
 
-    const [path, setPath] = useState('');
+    const [prefix_path, setPrefixPath] = useState('');
     const [selectedFiles, setSelectedFiles] = useState(undefined);
     const [fileObjs, setFileObjs] = useState([]);
     const [password, setPassword] = useState("AEWPG4169E");
@@ -115,7 +115,7 @@ function FilesInput({ onClose, onResourceClose, files, docTypes, accounts,
                 ...createFileObj(file),
                 selectedAccount,
                 selectedDocumentType,
-                path,
+                prefix_path,
                 password,
                 completed: 0,
                 uploaded: false
@@ -145,6 +145,7 @@ function FilesInput({ onClose, onResourceClose, files, docTypes, accounts,
             const formData = new FormData();
             // console.log("formData: file:", file)
             formData.append('name', file.name);
+            formData.append('prefix_path', prefix_path);
             formData.append('account', selectedAccount);
             formData.append('document_type', selectedDocumentType);
             formData.append('file', file.selectedFile);
@@ -153,6 +154,7 @@ function FilesInput({ onClose, onResourceClose, files, docTypes, accounts,
             formData.append('remark', 'No Remark');
 
             console.log("selectedAccount: ", selectedAccount);
+            console.log("prefix_path: ", prefix_path);
             uploadFileAsync(resType, file, formData);
         })
 
@@ -267,7 +269,7 @@ function FilesInput({ onClose, onResourceClose, files, docTypes, accounts,
                         className="pathInput" 
                         type="text" 
                         placeholder="Path" 
-                        onChange={e => setPath(e.target.value)} 
+                        onChange={e => setPrefixPath(e.target.value)}
                     />
                 </div>
 
