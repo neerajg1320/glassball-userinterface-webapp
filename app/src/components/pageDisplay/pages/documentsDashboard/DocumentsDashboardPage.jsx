@@ -4,13 +4,13 @@ import FeaturedInfo from './featuredInfo/FeaturedInfo'
 
 import { userData } from "../../../../dummyData";
 
-import "./filesDashboardPage.css";
+import "./documentsDashboardPage.css";
 
 import ResourceDisplay from '../../resourceDisplay/ResourceDisplay';
-import PreviewDisplay from './filesPreview/PreviewDisplay';
+import PreviewDisplay from '../filesDashboard/filesPreview/PreviewDisplay';
 
 
-function FilesDashboardPage({featured, chart}) {
+function DocumentsDashboardPage({featured, chart}) {
     const [flagFeatured] = useState(featured ? true : false)
     const [flagChart] = useState(chart ? true : false)
 
@@ -21,7 +21,7 @@ function FilesDashboardPage({featured, chart}) {
 
             <div className="resourceWidgets">
                 <div className="resourceListWidget">
-                    <ResourceDisplay resName="files"/>
+                    <ResourceDisplay resName="documents"/>
                 </div>
                 <div className="resourcePreviewWidget">
                     <PreviewDisplay />                    
@@ -31,4 +31,4 @@ function FilesDashboardPage({featured, chart}) {
     )
 }
 
-export default FilesDashboardPage
+export default DocumentsDashboardPage

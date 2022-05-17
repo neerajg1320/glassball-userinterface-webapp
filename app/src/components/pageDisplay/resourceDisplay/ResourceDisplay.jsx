@@ -5,11 +5,21 @@ import "./resourceDisplay.css"
 import {connect} from 'react-redux'
 import ResourceList from './ResourceList';
 
-function ResourceDisplay({files}) {
+function ResourceDisplay({resName, files, documents}) {
     return (
         <div className="resourceDisplay">
-            <span className="widgetSmallTitle">Files</span>
-            <ResourceList rList={files}/>
+            {resName == "files" &&
+                <div>
+                <span className="widgetSmallTitle">Files</span>
+                <ResourceList rList={files}/>
+                </div>
+            }
+            {resName == "documents" &&
+                <div>
+                <span className="widgetSmallTitle">Documents</span>
+                <ResourceList rList={documents}/>
+                </div>
+            }
         </div>
     )
 }
@@ -17,7 +27,8 @@ function ResourceDisplay({files}) {
 
 const mapStateToProps = state => {
     return {
-        files: state.resourceReducer.files
+        files: state.resourceReducer.files,
+        documents: state.resourceReducer.documents
     }
 }
 

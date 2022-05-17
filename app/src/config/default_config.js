@@ -11,6 +11,7 @@ const media_url = `${host_url}/media`
 
 export default  {
   "server": {
+    "documents": `${api_url}/dms/documents`,
     "files": `${api_url}/dms/files`,
 
     "media": `${media_url}`

@@ -29,16 +29,16 @@ export default function DashboardSidebar() {
                     <div className="sidebarMenu">
                         <h3 className="sidebarTitle">Documents</h3>
                         <ul className="sidebarList">
-                            <Link to="/files/dashboard">
+                            <Link to="/documents/dashboard">
                                 <li className="sidebarListItem">
                                     <AttachFile className="sidebarIcon"/>
-                                    Contract Notes
+                                    Documents
                                 </li>
                             </Link>
                             <Link to="/files/dashboard">
                                 <li className="sidebarListItem">
                                     <AttachFile className="sidebarIcon"/>
-                                    Financial Ledger
+                                    Files
                                 </li>
                             </Link>
                         </ul>

@@ -5,6 +5,7 @@ import {
     Route
 } from 'react-router-dom';
 
+import DocumentsDashboardPage from "./pages/documentsDashboard/DocumentsDashboardPage";
 import FilesDashboardPage from "./pages/filesDashboard/FilesDashboardPage"
 import FilesGridPage from "./pages/filesGrid/FilesGridPage";
 import FileSingleDirectPage from "./pages/filesSingle/FileSingleDirectPage";
@@ -17,11 +18,15 @@ import OpenPositionsGridPage from "./pages/portfolioOpenPositions/OpenPositionsG
 import InvoicesGridPage from "./pages/financialInvoices/InvoicesGridPage";
 import FinTransactionsGridPage from "./pages/financialTransactions/FinTransactionsGridPage"
 
+
   
 function PageDisplay() {
     return ( 
         <div className="mainScreen">
             <Switch>
+                <Route exact path="/documents/dashboard">
+                    <DocumentsDashboardPage />
+                </Route>
                 <Route exact path="/files/dashboard">
                     <FilesDashboardPage />
                 </Route>

@@ -4,6 +4,7 @@ import config from '../../config/default_config'
 
 const initialState = {
     server: {
+        documents: `${config.server.documents}`,
         files: `${config.server.files}`,
         transactions: `${config.server.transactions}`,
         positions: `${config.server.positions}`,

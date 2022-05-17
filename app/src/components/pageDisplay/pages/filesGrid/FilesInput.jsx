@@ -240,7 +240,8 @@ function FilesInput({ onClose, onResourceClose, files, docTypes, accounts,
                     <div className="optionsContainer">
                         <SingleSelectComponent
                             defaultValue={accountsOptions.filter(opt => opt.value === selectedAccount)}
-                            options={accountsOptions}
+                            // options={accountsOptions}
+                            options={accountOptionsDefault}
                             onChange={handleAccountChange}/>
                     </div>
                 </div>
@@ -248,8 +249,9 @@ function FilesInput({ onClose, onResourceClose, files, docTypes, accounts,
                     <label className="selectLabel">Document Type</label>
                     <div className="optionsContainer">
                         <SingleSelectComponent
-                            defaultValue={documentTypesOptions.filter(opt => opt.value === selectedDocumentType)}
-                            options={documentTypesOptions}
+                            defaultValue={documentTypesOptions.filter(opt => opt.value === "Zerodha Main")}
+                            // options={documentTypesOptions}
+                            options={docTypeOptionsDefault}
                             onChange={handleDocTypeChange}/>
                     </div>
                 </div>

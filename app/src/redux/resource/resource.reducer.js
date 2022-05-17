@@ -1,6 +1,7 @@
 import { ADD_RESOURCE, REMOVE_RESOURCE, SET_CURRENT_RESOURCE, SET_RESOURCES, UPDATE_RESOURCE } from "./resourceAction.types";
 
 const initialState = {
+    documents:[],
     files:[],
     transactions:[],
     positions:[],
