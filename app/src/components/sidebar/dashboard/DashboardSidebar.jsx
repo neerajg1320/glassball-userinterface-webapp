@@ -11,10 +11,16 @@ export default function DashboardSidebar() {
                     <div className="sidebarMenu">
                         <h3 className="sidebarTitle">Import</h3>
                         <ul className="sidebarList">
+                            <Link to="/documents/grid">
+                                <li className="sidebarListItem">
+                                    <GridOn className="sidebarIcon"/>
+                                    Documents List
+                                </li>
+                            </Link>
                             <Link to="/files/grid">    
                                 <li className="sidebarListItem">
                                     <GridOn className="sidebarIcon"/>
-                                    Document Files
+                                    Files List
                                 </li>
                             </Link>
                             {/* <Link to="/files/child.jpeg">    
@@ -27,7 +33,7 @@ export default function DashboardSidebar() {
                     </div>
 
                     <div className="sidebarMenu">
-                        <h3 className="sidebarTitle">Documents</h3>
+                        <h3 className="sidebarTitle">Preview</h3>
                         <ul className="sidebarList">
                             <Link to="/documents/dashboard">
                                 <li className="sidebarListItem">

@@ -8,6 +8,7 @@ import {
 import DocumentsDashboardPage from "./pages/documentsDashboard/DocumentsDashboardPage";
 import FilesDashboardPage from "./pages/filesDashboard/FilesDashboardPage"
 import FilesGridPage from "./pages/filesGrid/FilesGridPage";
+import DocumentsGridPage from "./pages/documentsGrid/DocumentsGridPage";
 import FileSingleDirectPage from "./pages/filesSingle/FileSingleDirectPage";
 
 import TransactionGridPage from "./pages/portfolioTransactions/TransactionsGridPage";
@@ -19,19 +20,23 @@ import InvoicesGridPage from "./pages/financialInvoices/InvoicesGridPage";
 import FinTransactionsGridPage from "./pages/financialTransactions/FinTransactionsGridPage"
 
 
+
   
 function PageDisplay() {
     return ( 
         <div className="mainScreen">
             <Switch>
+                <Route path="/documents/grid">
+                    <DocumentsGridPage />
+                </Route>
+                <Route path="/files/grid">
+                    <FilesGridPage />
+                </Route>
                 <Route exact path="/documents/dashboard">
                     <DocumentsDashboardPage />
                 </Route>
                 <Route exact path="/files/dashboard">
                     <FilesDashboardPage />
-                </Route>
-                <Route path="/files/grid">
-                    <FilesGridPage />
                 </Route>
                 <Route path="/files/:filename" component={FileSingleDirectPage}>
                     {/* <FilePreview /> */}

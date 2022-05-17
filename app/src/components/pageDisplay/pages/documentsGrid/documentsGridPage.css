@@ -1,0 +1,94 @@
+.filesPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filesGridTitle{
+    margin-bottom: 10px;
+}
+
+.filesResGridContainer{
+    width: 100%;
+    padding: 20px;
+    /*border: solid 1px red;*/
+
+}
+
+.filesTopbar{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    cursor: pointer;
+    margin: 10px 0px;
+}
+
+.borderlessButton{
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    background-color: salmon;
+    color: white;
+    cursor: pointer;
+}
+
+.fileLinksGroup{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.fileLink{
+    display: flex;
+    color: lightseagreen;
+    cursor: pointer;
+}
+
+.filesGridSize{
+    text-align: right;
+    padding: 0px 10px;
+    width: 100%;
+}
+
+.fileItemActions{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.fileItemEdit{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #3bb077;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.fileItemUploaded{
+    color: green;
+    display: flex;
+}
+
+
+
+
+.fileItemDelete{
+    color: red;
+    cursor: pointer;
+}
+
+
+.progressBarContainer{
+    width: 50%;
+    display: flex;
+}
+
+.fileItemProgress{
+    width: 100%;
+}
+
