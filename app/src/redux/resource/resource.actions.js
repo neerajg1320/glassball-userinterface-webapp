@@ -133,6 +133,44 @@ export const uploadResourceAsync = (resType, fileObj, formData, action) => {
     }
 }
 
+export const uploadResourceFilesAsync = (resType, resObj, formData, action) => {
+    console.log("formData:", formData)
+
+    return (dispatch, getState) => {
+        let uploadUrl = `${getState().configReducer.server[resType]}/`;
+        if (action) {
+            uploadUrl += `${action}/`
+        }
+
+        axios.post(
+            uploadUrl,
+            formData,
+            {
+              headers: {
+                'Authorization': `${getState().authReducer.token_title} ${getState().authReducer.token}`
+              },
+              // onUploadProgress: progress => {
+              //   const completedPercent = Math.round((progress.loaded / fileObj.size) * 100)
+              //   dispatch(updateResource(resType, fileObj.id, {completed: completedPercent}))
+              // }
+            }
+          )
+          .then(response => {
+            const addedResource = response.data
+
+            // dispatch(updateResource(resType, fileObj.id, {
+            //     id: addedResource.id,
+            //     file: addedResource.file,
+            //     size: addedResource.size,
+            //     uploaded: true
+            // }
+            // ))
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    }
+}
 
 // Not used so far we plan to use it for resource name change etc
 export const updateResourceAsync = (resType, id, update) => {

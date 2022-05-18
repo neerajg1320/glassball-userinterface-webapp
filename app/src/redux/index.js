@@ -1,6 +1,7 @@
 export {
     addResourceAsync,
-    uploadResourceAsync, 
+    uploadResourceAsync,
+    uploadResourceFilesAsync,
     removeResourceAsync, 
     fetchResourcesAsync,
     downloadResourcesAsync,

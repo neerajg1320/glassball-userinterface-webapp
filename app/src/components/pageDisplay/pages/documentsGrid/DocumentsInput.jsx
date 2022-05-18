@@ -44,13 +44,14 @@ const getResourceOptions = (res) => {
 }
 
 function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
-                        addFileAsync, uploadFileAsync, removeFileAsync,
+                        addDocumentAsync, uploadDocumentFilesAsync, removeDocumentAsync,
                         fetchDocTypesAsync, fetchAccountsAsync}) {
     const [accountsOptions, setAccountsOptions] = useState(accountOptionsDefault)
     const [selectedAccount, setSelectedAccount] = useState();
     const [documentTypesOptions, setDocumentTypeOptions] = useState(docTypeOptionsDefault)
     const [selectedDocumentType, setSelectedDocumentType] = useState();
 
+    const [documentTitle, setDocumentTitle] = useState('');
     const [prefix_path, setPrefixPath] = useState('');
     const [selectedFiles, setSelectedFiles] = useState(undefined);
     const [fileObjs, setFileObjs] = useState([]);
@@ -58,7 +59,7 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
     const [saveEnabled, setSaveEnabled] = useState("false");
     const filesInputRef = useRef();
     const filesListRef = useRef([]);
-    const resType = 'files';
+    const resType = 'documents';
 
     const columns = [
         { 
@@ -113,6 +114,7 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
         const fileObjects = [...e.target.files].map((file) => {
             const fileObject = {
                 ...createFileObj(file),
+                documentTitle,
                 selectedAccount,
                 selectedDocumentType,
                 prefix_path,
@@ -121,7 +123,7 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
                 uploaded: false
             }
 
-            addFileAsync(resType, fileObject)
+            addDocumentAsync(resType, fileObject)
 
             return fileObject;
         })
@@ -136,27 +138,32 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
 
     const clearFilesOnStore = (files) => {
         files.forEach(file => {
-            removeFileAsync(resType, file)
+            removeDocumentAsync(resType, file)
         })
     }
 
     const onUploadClick = () => {
-        fileObjs.forEach(file => {
-            const formData = new FormData();
-            // console.log("formData: file:", file)
-            formData.append('name', file.name);
-            formData.append('prefix_path', prefix_path);
-            formData.append('account', selectedAccount);
-            formData.append('document_type', selectedDocumentType);
-            formData.append('file', file.selectedFile);
-            formData.append('size', file.size);
-            formData.append('password', file.password);
-            formData.append('remark', 'No Remark');
+        const document = {
+            title: documentTitle,
+        }
 
-            console.log("selectedAccount: ", selectedAccount);
-            console.log("prefix_path: ", prefix_path);
-            uploadFileAsync(resType, file, formData);
+        const formData = new FormData();
+        // console.log("formData: file:", file)
+        formData.append('title', documentTitle);
+        // formData.append('name', file.name);
+        formData.append('prefix_path', prefix_path);
+        formData.append('account', selectedAccount);
+        formData.append('document_type', selectedDocumentType);
+        // formData.append('file', file.selectedFile);
+        // formData.append('size', file.size);
+        // formData.append('password', file.password);
+        formData.append('remark', 'No Remark');
+
+        fileObjs.forEach(file => {
+            formData.append('files[]', file.selectedFile)
         })
+
+        uploadDocumentFilesAsync(resType, document, formData);
 
         clearSelectedFiles();
     }
@@ -234,6 +241,15 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
 
     return (
         <div className="inputContainer">
+            <div className="inputFieldsContainer">
+                <label>Title</label>
+                <input
+                    className="pathInput"
+                    type="text"
+                    placeholder="Untitled"
+                    onChange={e => setDocumentTitle(e.target.value)}
+                />
+            </div>
             <div className="inputOptionsContainer">
                 <div className="selectContainer">
                     <label className="selectLabel">Account</label>
@@ -256,7 +272,6 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
                     </div>
                 </div>
             </div>
-
             <div className="inputFilesContainer">
                 <input 
                     className="filesSelectContainer"
@@ -319,8 +334,9 @@ const mapStateToProps = state => {
   
 const mapDispatchToProps = dispatch => {
     return {
-        addFileAsync: (resType, name) => dispatch(addResourceAsync(resType, name)),
-        uploadFileAsync: (resType, name, formData) => dispatch(uploadResourceAsync(resType, name, formData)),
+        addDocumentAsync: (resType, name) => dispatch(addResourceAsync(resType, name)),
+        // uploadDocumentAsync: (resType, name, formData) => dispatch(uploadResourceAsync(resType, name, formData)),
+        uploadDocumentFilesAsync: (resType, name, formData) => dispatch(uploadResourceAsync(resType, name, formData)),
         removeResourceAsync: (resType, name) => dispatch(removeResourceAsync(resType, name)),
         fetchDocTypesAsync: () => {dispatch(fetchResourcesAsync("docTypes"))},
         fetchAccountsAsync: () => {dispatch(fetchResourcesAsync("accounts"))},
