@@ -2,9 +2,12 @@ import React, {useState} from 'react'
 import "./settingsServer.css"
 import { updateConfigAsync, setTokenAsync, createTokenAsync } from '../../../../redux'
 import { connect } from 'react-redux'
+import ToggleSwitch from "../../../common/toggleswitch/ToggleSwitch";
+
 
 function SettingsServer({token, updateConfigAsync, setTokenAsync, createTokenAsync}) {
     const [tokenVal, setTokenVal] = useState(token)
+    const [backgroundProcessing, setBackgroundProcessing] = useState(true)
 
     const onTokenChange = e => {
         setTokenVal(e.target.value)
@@ -19,6 +22,10 @@ function SettingsServer({token, updateConfigAsync, setTokenAsync, createTokenAsy
         console.log("Need to get token");
         createTokenAsync('neeraj76@gmail.com', 'Local123');
     }
+
+    const handleDebugComponent = (checked) => {
+        setBackgroundProcessing(checked);
+    };
 
     return (
         <div className="settingsServer">
@@ -35,6 +42,12 @@ function SettingsServer({token, updateConfigAsync, setTokenAsync, createTokenAsy
 
             <div className="serverSettingsContainer">
                 <button  className="authButton" onClick={onForceAuthClick}>Force Auth</button>
+            </div>
+
+            <div className="serverSettingsContainer">
+                <ToggleSwitch onChange={handleDebugComponent} checked={backgroundProcessing}>
+                  Console Debug
+                </ToggleSwitch>
             </div>
         </div>
     )

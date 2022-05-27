@@ -10,10 +10,12 @@ function SSReactTable({data, title}) {
     const generateReactTableColumns = row => {
         const colArray = [];
         Object.keys(row).forEach(key => {
-            colArray.push({
-                Header: key,
-                accessor: key
-            })
+            if (key !== "") {
+                colArray.push({
+                    Header: key,
+                    accessor: key
+                })
+            }
         })
         // console.log('colArray:', colArray);
         return colArray

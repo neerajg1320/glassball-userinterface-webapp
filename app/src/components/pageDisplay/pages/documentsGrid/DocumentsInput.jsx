@@ -156,7 +156,7 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
         formData.append('document_type', selectedDocumentType);
         // formData.append('file', file.selectedFile);
         // formData.append('size', file.size);
-        // formData.append('password', file.password);
+        formData.append('password', password);
         formData.append('remark', 'No Remark');
 
         fileObjs.forEach(file => {
