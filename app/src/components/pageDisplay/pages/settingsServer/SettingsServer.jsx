@@ -20,7 +20,7 @@ function SettingsServer({token, updateConfigAsync, setTokenAsync, createTokenAsy
 
     const onForceAuthClick = () => {
         console.log("Need to get token");
-        createTokenAsync('neeraj76@gmail.com', 'Local123');
+        createTokenAsync('admin@abc.com', 'Super123');
     }
 
     const handleDebugComponent = (checked) => {

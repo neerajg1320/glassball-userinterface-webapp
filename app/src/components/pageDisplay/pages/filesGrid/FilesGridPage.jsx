@@ -29,7 +29,7 @@ function FilesGridPage({files, removeFileAsync, fetchFilesAsync}) {
       {
         field: 'name',
         headerName: 'Name',
-        width: 250,
+        width: 350,
         // editable: true,
       },
       {
