@@ -5,6 +5,7 @@ export {
     removeResourceAsync, 
     fetchResourcesAsync,
     downloadResourcesAsync,
+    downloadFileAsync,
     actionResourcesAsync,
     setCurrentResourceAsync
 } from './resource/resource.actions';

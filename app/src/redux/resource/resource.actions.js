@@ -172,6 +172,38 @@ export const uploadResourceFilesAsync = (resType, resObj, formData, action) => {
     }
 }
 
+export const downloadFileAsync = (downloadUrl, fileName) => {
+
+    return (dispatch, getState) => {
+        axios.request({
+            url: downloadUrl,
+            method: 'GET',
+            headers: {
+                'Accept': 'application/xlsx',
+                'Authorization': `${getState().authReducer.token_title} ${getState().authReducer.token}`
+            },
+            responseType: 'blob'
+        })
+            .then((response) => {
+                console.log("downloadFileAsync():", response.data)
+                return response.data;
+            })
+            .then((blob) => {
+                const url = window.URL.createObjectURL(new Blob([blob]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', fileName);
+
+                // Append to html page
+                document.body.appendChild(link);
+                // Force download
+                link.click();
+                // Clean up and remove the link
+                link.parentNode.removeChild(link);
+            })
+    }
+}
+
 // Not used so far we plan to use it for resource name change etc
 export const updateResourceAsync = (resType, id, update) => {
     return (dispatch) => {

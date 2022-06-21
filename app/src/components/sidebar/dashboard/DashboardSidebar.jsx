@@ -35,12 +35,12 @@ export default function DashboardSidebar() {
                     <div className="sidebarMenu">
                         <h3 className="sidebarTitle">Preview</h3>
                         <ul className="sidebarList">
-                            <Link to="/documents/dashboard">
+                            {/*<Link to="/documents/dashboard">
                                 <li className="sidebarListItem">
                                     <AttachFile className="sidebarIcon"/>
                                     Documents
                                 </li>
-                            </Link>
+                            </Link> */}
                             <Link to="/files/dashboard">
                                 <li className="sidebarListItem">
                                     <AttachFile className="sidebarIcon"/>

@@ -208,8 +208,8 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
 
     useEffect(() => {
         // Disabled as we do not use it currently
-        // fetchDocTypesAsync();
-        // fetchAccountsAsync();
+        fetchDocTypesAsync();
+        fetchAccountsAsync();
 
         return () => {
             // console.log("return useEffect[]: filesListRef=", filesListRef.current);
@@ -256,8 +256,8 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
                     <div className="optionsContainer">
                         <SingleSelectComponent
                             defaultValue={accountsOptions.filter(opt => opt.value === selectedAccount)}
-                            // options={accountsOptions}
-                            options={accountOptionsDefault}
+                            options={accountsOptions}
+                            // options={accountOptionsDefault}
                             onChange={handleAccountChange}/>
                     </div>
                 </div>
@@ -266,8 +266,8 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
                     <div className="optionsContainer">
                         <SingleSelectComponent
                             defaultValue={documentTypesOptions.filter(opt => opt.value === "Zerodha Main")}
-                            // options={documentTypesOptions}
-                            options={docTypeOptionsDefault}
+                            options={documentTypesOptions}
+                            // options={docTypeOptionsDefault}
                             onChange={handleDocTypeChange}/>
                     </div>
                 </div>

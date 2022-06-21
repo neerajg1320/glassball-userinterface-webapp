@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import "./filesGridPage.css"
-import { PictureAsPdf, DeleteOutline, Done, Clear, TextFormat, CalendarViewMonth } from '@mui/icons-material';
+import { Attachment, DeleteOutline, Done, Clear } from '@mui/icons-material';
 
 import { connect } from 'react-redux';
 import { removeResourceAsync, fetchResourcesAsync } from '../../../../redux';
@@ -21,6 +21,7 @@ function FilesGridPage({files, removeFileAsync, fetchFilesAsync}) {
     }
 
     const onFilePathClick = (fileurl) => {
+        console.log("onFilePathClick(): fileurl=", fileurl);
       window.open(fileurl)
     }
 
@@ -53,13 +54,7 @@ function FilesGridPage({files, removeFileAsync, fetchFilesAsync}) {
           return ( 
             <div className="fileLinksGroup">
               <div className="fileLink" onClick={() => {onFilePathClick(params.row.file)}}>
-                <PictureAsPdf  className="fileItemLink" />
-              </div>
-              <div className="fileLink"  onClick={() => {onFilePathClick(params.row.textFile)}}>
-                <TextFormat  className="fileItemView" />
-              </div>
-              <div className="fileLink"  onClick={() => {onFilePathClick(params.row.ssFile)}}>
-                <CalendarViewMonth  className="fileItemView" />
+                <Attachment  className="fileItemLink" />
               </div>
             </div> 
           )

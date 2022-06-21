@@ -45,27 +45,6 @@ function DocumentsGridPage({documents, removeResourceAsync, fetchResourcesAsync}
         }
       },
       {
-        field: 'file',
-        headerName: 'Link',
-        width: 150,
-        // editable: true,
-        renderCell: (params) => {
-          return ( 
-            <div className="fileLinksGroup">
-              <div className="fileLink" onClick={() => {onFilePathClick(params.row.file)}}>
-                <PictureAsPdf  className="fileItemLink" />
-              </div>
-              <div className="fileLink"  onClick={() => {onFilePathClick(params.row.textFile)}}>
-                <TextFormat  className="fileItemView" />
-              </div>
-              <div className="fileLink"  onClick={() => {onFilePathClick(params.row.ssFile)}}>
-                <CalendarViewMonth  className="fileItemView" />
-              </div>
-            </div> 
-          )
-        }
-      },
-      {
         field: 'action',
         headerName: "Action",
         width: 50,

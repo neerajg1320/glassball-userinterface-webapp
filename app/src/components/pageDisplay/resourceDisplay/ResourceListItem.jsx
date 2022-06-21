@@ -1,9 +1,9 @@
 import React from 'react'
 import "./resourceListItem.css"
-import { CalendarViewMonth, Delete, PictureAsPdfRounded, TextFormat, FileDownload } from '@mui/icons-material';
+import { Attachment, PreviewTwoTone,  Delete,  TextFormat } from '@mui/icons-material';
 import {connect} from 'react-redux';
 import { removeResourceAsync, setCurrentResourceAsync } from '../../../redux';
-import { downloadExcel } from "../../../helpers/spreadsheet";
+
 
 function ResourceListItem({rItem, removeResourceAsync, setCurrentResourceAsync}) {
     const resType = 'files';
@@ -18,41 +18,25 @@ function ResourceListItem({rItem, removeResourceAsync, setCurrentResourceAsync})
         setCurrentResourceAsync(resType, link)
     }
 
-    const onResourceDownloadClick = (rItem) => {
-        console.log("onItemClick(): Click", rItem.ssFile);
-
-        downloadExcel(
-            // 'http://localhost:8000/api/document/ingredients/',
-            rItem.ssFile,
-            'c716a72bcc515535eecec695f067fc5b591d1d27',
-            'trades.xlsx'
-        )
-    }
-
     return (
         <li className="resourceListItem" id={rItem.id}>
             {/* <ChromeReaderMode  className="sidebarIcon"/> */}
             <div className="widgetSmallUserTop">
-                <span className="widgetSmallUsername">{rItem.title}</span>
+                <span className="widgetSmallUsername">{rItem.name}</span>
             </div>
             <div className="widgetSmallUserBottom">
                 <div className="resourceInfo">
-                <span className="widgetSmallUserTitle">{rItem.size}</span>
+                {/*<span className="widgetSmallUserTitle">{rItem.size}</span>*/}
                 <span className="widgetSmallId">{rItem.pkid}</span>
                 </div>
                 <div className="resourceButtonsGroup">
-                    <div className="widgetSmallIcon" onClick={() => onResourcePreviewClick(rItem.file)}>
-                        <PictureAsPdfRounded />
-                    </div>
-                    <div className="widgetSmallIcon" onClick={() => onResourcePreviewClick(rItem.textFile)}>
-                        <TextFormat/>
-                    </div>                    
-                    <div className="widgetSmallIcon" onClick={() => onResourcePreviewClick(rItem.ssFile)}>
-                        <CalendarViewMonth/>
-                    </div>
-                    <div className="widgetSmallIcon" onClick={() => onResourceDownloadClick(rItem)}>
-                        <FileDownload/>
-                    </div>
+
+                </div>
+                <div className="widgetSmallIcon" onClick={() => onResourcePreviewClick(rItem.file)}>
+                    <PreviewTwoTone />
+                </div>
+                <div className="widgetSmallIcon" onClick={() => onResourcePreviewClick(rItem.file)}>
+                    <Attachment />
                 </div>
                 <Delete className="resourceDeleteButton" onClick={onResourceDelete}/>
             </div>

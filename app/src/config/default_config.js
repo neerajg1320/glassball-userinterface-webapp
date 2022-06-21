@@ -13,6 +13,8 @@ export default  {
   "server": {
     "documents": `${api_url}/dms/documents`,
     "files": `${api_url}/dms/files`,
+    "docTypes": `${api_url}/rms/document_types`,
+    "accounts": `${api_url}/rms/accounts`,
 
     "media": `${media_url}`
   },
