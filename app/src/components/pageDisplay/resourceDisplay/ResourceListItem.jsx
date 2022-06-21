@@ -18,6 +18,12 @@ function ResourceListItem({rItem, removeResourceAsync, setCurrentResourceAsync})
         setCurrentResourceAsync(resType, link)
     }
 
+    // TBD: This is duplicated code. The other definition is in FilesGridPage.jsx
+    const onFilePathClick = (fileurl) => {
+      console.log("onFilePathClick(): fileurl=", fileurl);
+      window.open(fileurl)
+    }
+
     return (
         <li className="resourceListItem" id={rItem.id}>
             {/* <ChromeReaderMode  className="sidebarIcon"/> */}
@@ -35,7 +41,7 @@ function ResourceListItem({rItem, removeResourceAsync, setCurrentResourceAsync})
                 <div className="widgetSmallIcon" onClick={() => onResourcePreviewClick(rItem.file)}>
                     <PreviewTwoTone />
                 </div>
-                <div className="widgetSmallIcon" onClick={() => onResourcePreviewClick(rItem.file)}>
+                <div className="widgetSmallIcon" onClick={() => onFilePathClick(rItem.file)}>
                     <Attachment />
                 </div>
                 <Delete className="resourceDeleteButton" onClick={onResourceDelete}/>

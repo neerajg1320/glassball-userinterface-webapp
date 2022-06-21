@@ -20,8 +20,9 @@ function FilesGridPage({files, removeFileAsync, fetchFilesAsync}) {
       fetchFilesAsync(resType)
     }
 
+    // TBD: This is duplicated code. The other definition is in ResourceListItem.jsx
     const onFilePathClick = (fileurl) => {
-        console.log("onFilePathClick(): fileurl=", fileurl);
+      console.log("onFilePathClick(): fileurl=", fileurl);
       window.open(fileurl)
     }
 
