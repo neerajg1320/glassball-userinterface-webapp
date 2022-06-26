@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import "./settingsServer.css"
 import { updateConfigAsync, setTokenAsync, createTokenAsync } from '../../../../redux'
 import { connect } from 'react-redux'
@@ -18,14 +18,27 @@ function SettingsServer({token, updateConfigAsync, setTokenAsync, createTokenAsy
         setTokenAsync(tokenVal)
     }
 
-    const onForceAuthClick = () => {
+    const onAdminAuthClick = () => {
         console.log("Need to get token");
         createTokenAsync('admin@abc.com', 'Super123');
     }
 
+    const onStaffAuthClick = () => {
+        console.log("Need to get token");
+        createTokenAsync('staff@abc.com', 'Super123');
+    }
+
+    const onUserAuthClick = () => {
+        console.log("Need to get token");
+        createTokenAsync('neeraj76@yahoo.com', 'Local123');
+    }
     const handleDebugComponent = (checked) => {
         setBackgroundProcessing(checked);
     };
+
+    useEffect(() => {
+        console.log("Token Updated: ", token)
+    }, [token]);
 
     return (
         <div className="settingsServer">
@@ -41,7 +54,9 @@ function SettingsServer({token, updateConfigAsync, setTokenAsync, createTokenAsy
             </div>
 
             <div className="serverSettingsContainer">
-                <button  className="authButton" onClick={onForceAuthClick}>Force Auth</button>
+                <button  className="authButton" onClick={onAdminAuthClick}>Admin Auth</button>
+                <button  className="authButton" onClick={onStaffAuthClick}>Staff Auth</button>
+                <button  className="authButton" onClick={onUserAuthClick}>User Auth</button>
             </div>
 
             <div className="serverSettingsContainer">
