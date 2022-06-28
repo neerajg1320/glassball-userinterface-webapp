@@ -1,14 +1,26 @@
-.imagesContainer {
-    border: solid 1px black;
-    padding: 2px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* At last you have to copy these css styles from here ,Create a CSS file and paste it and import the file */
 
+/* Also you can customize these css styles*/
+
+/* In my case, I use these CSS styles in my App.css file*/
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
-.previewContent {
-    border: solid 1px blue;
-    padding: 5px;
-    margin: 5px;
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.imageFrame {
+  border: solid 1px black;
 }

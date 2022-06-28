@@ -8,6 +8,7 @@ import PdfPreview from './pdfPreview/PdfPreview';
 import TextPreview from './textPreview/TextPreview';
 import SpreadsheetPreview from './spreadsheetPreview/SpreadsheetPreview';
 import ImageReel from "./carouselPreview/ImageReel";
+import ImageCarousel from "./carouselPreview/ImageCarousel";
 
 
 function FilePreviewDisplay({fileUrl}) {
@@ -55,7 +56,8 @@ function PreviewDisplay({ currentLink, url}) {
         <div className="previewDisplay">
 
             {currentLink.file && <FilePreviewDisplay fileUrl={currentLink.file} />}
-            {!currentLink.file && <ImageReel images={images} />}
+            {/*{!currentLink.file && <ImageReel images={images} />}*/}
+            {!currentLink.file && <ImageCarousel images={images} />}
         </div>
     )
 }
