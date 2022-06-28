@@ -1,4 +1,4 @@
-import React, {useEffect}  from 'react';
+import React, {useEffect, useState} from 'react';
 import "./previewDisplay.css";
 import { connect } from 'react-redux';
 
@@ -7,32 +7,60 @@ import { isImage, isPdf, isSpreadsheet, isText } from '../../../../../helpers/fi
 import PdfPreview from './pdfPreview/PdfPreview';
 import TextPreview from './textPreview/TextPreview';
 import SpreadsheetPreview from './spreadsheetPreview/SpreadsheetPreview';
+import ImageReel from "./carouselPreview/ImageReel";
 
 
-function PreviewDisplay({ currentLink, url}) {
-    const fileurl = url ? url :
-        (currentLink ? currentLink : undefined)
-
-    // console.log("PreviewDisplay: fileurl:", fileurl)
-
+function FilePreviewDisplay({fileUrl}) {
     const onPdfLoad = () => {
-        // console.log("PDF Loaded")
-    }
-
-    useEffect(() => {
-        console.log("PreviewDisplay:useEffect fileurl:", fileurl)
-    }, [currentLink])
+        console.log("PDF Loaded")
+    };
 
     return (
         <div className="previewDisplay">
             <h2 className="previewTitle">File Preview</h2>
-            {isImage(fileurl) && <ImagePreview src={fileurl}/> }
-            {isPdf(fileurl) && <PdfPreview url={fileurl} onLoad={onPdfLoad}/> }
-            {isText(fileurl) && <TextPreview url={fileurl} /> }
-            {isSpreadsheet(fileurl) && <SpreadsheetPreview url={fileurl} /> }
+            {isImage(fileUrl) && <ImagePreview src={fileUrl}/> }
+            {isPdf(fileUrl) && <PdfPreview url={fileUrl} onLoad={onPdfLoad}/> }
+            {isText(fileUrl) && <TextPreview url={fileUrl} /> }
+            {isSpreadsheet(fileUrl) && <SpreadsheetPreview url={fileUrl} /> }
         </div>
     )
 }
+
+function PreviewDisplay({ currentLink, url}) {
+    const [fileUrl, setFileUrl] = useState();
+    const [images, setImages] = useState([]);
+
+    useEffect(() => {
+        console.log("PreviewDisplay: fileUrl:", fileUrl)
+    }, [fileUrl]);
+
+    useEffect(() => {
+        console.log("PreviewDisplay:useEffect() currentLink:", currentLink)
+
+        if (currentLink && currentLink != "") {
+            if (currentLink.file) {
+                setFileUrl(currentLink.file);
+            } else if (currentLink.members.length > 0) {
+                const file_images = currentLink.members.map(elm => {
+                        return {id: elm.pkid, src: elm.file, alt: elm.part_num}
+                    }
+                );
+                // console.log("images=", file_images);
+                setImages(file_images)
+            }
+        }
+    }, [currentLink])
+
+    return (
+        <div className="previewDisplay">
+
+            {currentLink.file && <FilePreviewDisplay fileUrl={currentLink.file} />}
+            {!currentLink.file && <ImageReel images={images} />}
+        </div>
+    )
+}
+
+
 
 const mapsStateToProps = state => {
     return {

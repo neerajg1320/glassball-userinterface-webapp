@@ -1,0 +1,14 @@
+.imagesContainer {
+    border: solid 1px black;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.previewContent {
+    border: solid 1px blue;
+    padding: 5px;
+    margin: 5px;
+}

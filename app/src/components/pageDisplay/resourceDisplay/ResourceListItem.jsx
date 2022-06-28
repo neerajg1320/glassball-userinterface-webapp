@@ -14,16 +14,7 @@ function ResourceListItem({rItem, removeResourceAsync, setCurrentResourceAsync})
     }
 
     const onResourcePreviewClick = (rItem) => {
-        const useSingleFileBinder = true;
-
-        var link = rItem.file;
-        console.log(rItem, link)
-        if (useSingleFileBinder) {
-            if (link == null && rItem.members.length > 0) {
-                link = rItem.members[0].file;
-            }
-        }
-        setCurrentResourceAsync(resType, link)
+        setCurrentResourceAsync(resType, rItem);
     }
 
     // TBD: This is duplicated code. The other definition is in FilesGridPage.jsx
