@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, {useEffect}  from 'react';
 import "./previewDisplay.css";
 import { connect } from 'react-redux';
 
@@ -19,9 +19,9 @@ function PreviewDisplay({ currentLink, url}) {
         // console.log("PDF Loaded")
     }
 
-    // useEffect(() => {
-    //     console.log("PreviewDisplay:useEffect fileurl:", fileurl)
-    // }, currentLink)
+    useEffect(() => {
+        console.log("PreviewDisplay:useEffect fileurl:", fileurl)
+    }, [currentLink])
 
     return (
         <div className="previewDisplay">

@@ -13,13 +13,22 @@ function ResourceListItem({rItem, removeResourceAsync, setCurrentResourceAsync})
         removeResourceAsync(resType, rItem)
     }
 
-    const onResourcePreviewClick = (link) => {
-        // console.log(rItem, link)
+    const onResourcePreviewClick = (rItem) => {
+        const useSingleFileBinder = true;
+
+        var link = rItem.file;
+        console.log(rItem, link)
+        if (useSingleFileBinder) {
+            if (link == null && rItem.members.length > 0) {
+                link = rItem.members[0].file;
+            }
+        }
         setCurrentResourceAsync(resType, link)
     }
 
     // TBD: This is duplicated code. The other definition is in FilesGridPage.jsx
-    const onFilePathClick = (fileurl) => {
+    const onFilePathClick = (rItem) => {
+      const fileurl = rItem.file;
       console.log("onFilePathClick(): fileurl=", fileurl);
       window.open(fileurl)
     }
@@ -38,10 +47,10 @@ function ResourceListItem({rItem, removeResourceAsync, setCurrentResourceAsync})
                 <div className="resourceButtonsGroup">
 
                 </div>
-                <div className="widgetSmallIcon" onClick={() => onResourcePreviewClick(rItem.file)}>
+                <div className="widgetSmallIcon" onClick={() => onResourcePreviewClick(rItem)}>
                     <PreviewTwoTone />
                 </div>
-                <div className="widgetSmallIcon" onClick={() => onFilePathClick(rItem.file)}>
+                <div className="widgetSmallIcon" onClick={() => onFilePathClick(rItem)}>
                     <Attachment />
                 </div>
                 <Delete className="resourceDeleteButton" onClick={onResourceDelete}/>
