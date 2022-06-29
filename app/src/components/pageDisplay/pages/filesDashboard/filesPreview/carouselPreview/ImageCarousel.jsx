@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import "./imageCarousel.css";
+import FilePreviewDisplay from "../FilePreviewDisplay";
 
 SwiperCore.use([EffectCoverflow, Pagination]);
 // if you want to use array
@@ -40,7 +41,8 @@ const ImageCarousel = ({images}) => {
         {images.map((img, i) => {
           return (
             <SwiperSlide key={i}>
-              <img className="imageFrame" src={img.src} alt="" />
+              {/*<img className="imageFrame" src={img.src} alt="" />*/}
+              <FilePreviewDisplay fileUrl={img.src} />
             </SwiperSlide>
           );
         })}

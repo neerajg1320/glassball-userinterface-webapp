@@ -1,0 +1,15 @@
+.previewDisplay{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.previewTitle {
+    margin-bottom: 20px;
+    margin-left: 100px;
+}
+
+.previewContent{
+    max-width: 90%;
+}
