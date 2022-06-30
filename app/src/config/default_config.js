@@ -1,10 +1,4 @@
-
-const cloud_url = `https://api.glassball.app`
-// We are using request nginx server on the localhost so that we can serve media with support for CORS
-const local_url = `http://localhost:8080`
-
 const host_url = `${process.env.REACT_APP_API_SERVER}`
-// console.log("host_url:", host_url);
 
 const api_url = `${host_url}/api/v1`
 const media_url = `${host_url}/media`
