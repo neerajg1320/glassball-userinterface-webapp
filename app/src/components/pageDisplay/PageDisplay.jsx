@@ -19,8 +19,6 @@ import OpenPositionsGridPage from "./pages/portfolioOpenPositions/OpenPositionsG
 import InvoicesGridPage from "./pages/financialInvoices/InvoicesGridPage";
 import FinTransactionsGridPage from "./pages/financialTransactions/FinTransactionsGridPage"
 
-
-
   
 function PageDisplay() {
     return ( 
