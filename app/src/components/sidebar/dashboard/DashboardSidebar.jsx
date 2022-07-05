@@ -20,7 +20,7 @@ export default function DashboardSidebar() {
                             <Link to="/files/grid">    
                                 <li className="sidebarListItem">
                                     <GridOn className="sidebarIcon"/>
-                                    Files List
+                                    FileBinders List
                                 </li>
                             </Link>
                             {/* <Link to="/files/child.jpeg">    
@@ -44,7 +44,7 @@ export default function DashboardSidebar() {
                             <Link to="/files/dashboard">
                                 <li className="sidebarListItem">
                                     <AttachFile className="sidebarIcon"/>
-                                    Files
+                                    FileBinders Preview
                                 </li>
                             </Link>
                         </ul>

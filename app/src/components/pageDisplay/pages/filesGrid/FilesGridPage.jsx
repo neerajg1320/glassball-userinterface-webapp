@@ -98,7 +98,7 @@ function FilesGridPage({files, removeFileAsync, fetchFilesAsync}) {
         <div className="filesPage">
             <div className="filesResGridContainer">
                 <ResourceGrid
-                    title='Files'
+                    title='FileBinders'
                     resType={resType}
                     data={files}
                     columns={columns}>

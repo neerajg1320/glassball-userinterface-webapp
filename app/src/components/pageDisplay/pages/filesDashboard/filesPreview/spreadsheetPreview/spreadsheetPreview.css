@@ -4,8 +4,9 @@
 }
 
 .spreadSheets{
-    /* border: solid 1px saddlebrown; */
+     /*border: solid 1px saddlebrown;*/
     display: flex;
     flex-direction: column;
-    overflow: auto;
+    overflow: scroll;
+    width: 100%;
 }
