@@ -35,6 +35,12 @@ function FilesGridPage({files, removeFileAsync, fetchFilesAsync}) {
         // editable: true,
       },
       {
+        field: 'type',
+        headerName: 'Type',
+        width: 100,
+        // editable: true,
+      },
+      {
         field: 'uploaded',
         headerName: "Uploaded",
         width: 100,
