@@ -20,8 +20,8 @@ function PreviewDisplay({ currentLink, url}) {
         if (currentLink && currentLink != "") {
             if (currentLink.file) {
                 setFileUrl(currentLink.file);
-            } else if (currentLink.members.length > 0) {
-                const file_images = currentLink.members.map(elm => {
+            } else if (currentLink.member_fileparts.length > 0) {
+                const file_images = currentLink.member_fileparts.map(elm => {
                         return {id: elm.pkid, src: elm.file, alt: elm.part_num}
                     }
                 );
