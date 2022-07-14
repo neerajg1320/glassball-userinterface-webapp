@@ -41,7 +41,6 @@ const ImageCarousel = ({images}) => {
         {images.map((img, i) => {
           return (
             <SwiperSlide key={i}>
-              {/*<img className="imageFrame" src={img.src} alt="" />*/}
               <FilePreviewDisplay fileUrl={img.src} />
             </SwiperSlide>
           );

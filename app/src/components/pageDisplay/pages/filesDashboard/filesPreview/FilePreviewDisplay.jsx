@@ -14,6 +14,7 @@ export default function FilePreviewDisplay({fileUrl}) {
 
     return (
         <div className="previewDisplay">
+            <a href={fileUrl}>Download</a>
             <h2 className="previewTitle">File Preview</h2>
             {isImage(fileUrl) && <ImagePreview src={fileUrl}/> }
             {isPdf(fileUrl) && <PdfPreview url={fileUrl} onLoad={onPdfLoad}/> }
