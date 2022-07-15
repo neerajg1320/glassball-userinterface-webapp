@@ -1,6 +1,6 @@
 import React from 'react'
 import "./resourceListItem.css"
-import { Attachment, PreviewTwoTone,  Delete,  TextFormat } from '@mui/icons-material';
+import { PreviewTwoTone,  Delete } from '@mui/icons-material';
 import {connect} from 'react-redux';
 import { removeResourceAsync, setCurrentResourceAsync } from '../../../redux';
 

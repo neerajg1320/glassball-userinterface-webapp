@@ -1,3 +1,4 @@
+import { Attachment } from '@mui/icons-material';
 import {isImage, isPdf, isSpreadsheet, isText} from "../../../../../helpers/files";
 import ImagePreview from "./imagePreview/ImagePreview";
 import PdfPreview from "./pdfPreview/PdfPreview";
@@ -14,7 +15,7 @@ export default function FilePreviewDisplay({fileUrl}) {
 
     return (
         <div className="previewDisplay">
-            <a href={fileUrl}>Download</a>
+            <Attachment/><a href={fileUrl}>Download</a>
             <h2 className="previewTitle">File Preview</h2>
             {isImage(fileUrl) && <ImagePreview src={fileUrl}/> }
             {isPdf(fileUrl) && <PdfPreview url={fileUrl} onLoad={onPdfLoad}/> }
