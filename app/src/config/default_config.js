@@ -10,6 +10,7 @@ export default  {
     "files": `${api_url}/dms/filebinders`,
     "docTypes": `${api_url}/rms/document_types`,
     "accounts": `${api_url}/rms/accounts`,
+    "namespaces": `${api_url}/dps/namespaces`,
 
     "media": `${media_url}`
   },

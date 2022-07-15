@@ -32,6 +32,10 @@ const docTypeOptionsDefault = [
     { value: 'TradeConfirmation', label: 'TradeConfirmation' },
 ]
 
+const namespacesOptionsDefault = [
+
+]
+
 const getResourceOptions = (res) => {
     const options = res.map(o => {
         return {
@@ -43,13 +47,15 @@ const getResourceOptions = (res) => {
     return options;
 }
 
-function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
+function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts, namespaces,
                         addDocumentAsync, uploadDocumentFilesAsync, removeDocumentAsync,
-                        fetchDocTypesAsync, fetchAccountsAsync}) {
+                        fetchDocTypesAsync, fetchAccountsAsync, fetchNamespacesAsync}) {
     const [accountsOptions, setAccountsOptions] = useState(accountOptionsDefault)
     const [selectedAccount, setSelectedAccount] = useState();
     const [documentTypesOptions, setDocumentTypeOptions] = useState(docTypeOptionsDefault)
     const [selectedDocumentType, setSelectedDocumentType] = useState();
+    const [namespacesOptions, setNamespacesOptions] = useState(namespacesOptionsDefault)
+    const [selectedNamespace, setSelectedNamespace] = useState();
 
     const [documentTitle, setDocumentTitle] = useState('');
     const [prefix_path, setPrefixPath] = useState('');
@@ -207,9 +213,17 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
     }, [accounts]);
 
     useEffect(() => {
+        const options = getResourceOptions(namespaces);
+
+        // console.log("accountsOptions:", options);
+        setNamespacesOptions(options);
+    }, [namespaces]);
+
+    useEffect(() => {
         // Disabled as we do not use it currently
         fetchDocTypesAsync();
         fetchAccountsAsync();
+        fetchNamespacesAsync();
 
         return () => {
             // console.log("return useEffect[]: filesListRef=", filesListRef.current);
@@ -239,6 +253,10 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
         setSelectedDocumentType(option.value);
     }
 
+    const handleNameSpaceChange = (option) => {
+        setSelectedDocumentType(option.value);
+    }
+
     return (
         <div className="inputContainer">
             <div className="inputFieldsContainer">
@@ -249,6 +267,16 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
                     placeholder="Untitled"
                     onChange={e => setDocumentTitle(e.target.value)}
                 />
+                <div className="selectContainer">
+                    <label className="selectLabel">NameSpace</label>
+                    <div className="optionsContainer">
+                        <SingleSelectComponent
+                            defaultValue={documentTypesOptions.filter(opt => opt.value === "Zerodha Main")}
+                            options={namespacesOptions}
+                            // options={docTypeOptionsDefault}
+                            onChange={handleNameSpaceChange}/>
+                    </div>
+                </div>
             </div>
             <div className="inputOptionsContainer">
                 <div className="selectContainer">
@@ -271,6 +299,9 @@ function DocumentsInput({ onClose, onResourceClose, files, docTypes, accounts,
                             onChange={handleDocTypeChange}/>
                     </div>
                 </div>
+            </div>
+            <div className="inputOptionsContainer">
+
             </div>
             <div className="inputFilesContainer">
                 <input 
@@ -329,6 +360,7 @@ const mapStateToProps = state => {
         files: state.resourceReducer.files.filter(file => file.uploaded === false),
         docTypes: state.resourceReducer.docTypes,
         accounts: state.resourceReducer.accounts,
+        namespaces: state.resourceReducer.namespaces,
     }
   }
   
@@ -340,6 +372,7 @@ const mapDispatchToProps = dispatch => {
         removeResourceAsync: (resType, name) => dispatch(removeResourceAsync(resType, name)),
         fetchDocTypesAsync: () => {dispatch(fetchResourcesAsync("docTypes"))},
         fetchAccountsAsync: () => {dispatch(fetchResourcesAsync("accounts"))},
+        fetchNamespacesAsync: () => {dispatch(fetchResourcesAsync("namespaces"))},
     }
 }
 

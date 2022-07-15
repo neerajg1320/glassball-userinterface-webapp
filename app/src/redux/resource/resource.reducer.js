@@ -10,6 +10,7 @@ const initialState = {
     finTransactions:[],
     docTypes:[],
     accounts:[],
+    namespaces:[],
     
     currentLink: ''
 }

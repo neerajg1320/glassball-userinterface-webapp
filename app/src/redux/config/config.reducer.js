@@ -13,6 +13,7 @@ const initialState = {
         finTransactions: `${config.server.finTransactions}`,
         docTypes: `${config.server.docTypes}`,
         accounts: `${config.server.accounts}`,
+        namespaces: `${config.server.namespaces}`,
     }
 }
 
